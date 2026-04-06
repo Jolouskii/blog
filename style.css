@@ -1,4 +1,7 @@
-/* --- Base Styles & Reset --- */
+/* ========================================
+   1. BASE STYLES & RESET
+   ======================================== 
+*/
 * {
     box-sizing: border-box;
     margin: 0;
@@ -6,34 +9,39 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.7;
     color: #333;
-    background-color: #f4f4f4;
-    animation: fadeIn 1.5s ease-in;
+    background-color: #f9f9f9;
+    /* Task 6: Initial page fade-in */
+    animation: fadeInPage 1s ease-out;
 }
 
+/* ========================================
+   2. HEADER & NAVIGATION
+   ======================================== 
+*/
 header {
-    background: #2c3e50;
-    color: white;
-    padding: 2rem;
+    background-color: #1a1a1a;
+    color: #fff;
+    padding: 2rem 1rem;
     text-align: center;
 }
 
-/* --- Navigation & Hover Effects --- */
 nav ul {
     list-style: none;
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 15px;
     margin-top: 1rem;
 }
 
+/* Task 6: Nav Hover Effects & Transitions */
 nav a {
-    color: white;
+    color: #ddd;
     text-decoration: none;
-    padding: 8px 16px;
-    border-radius: 4px;
+    padding: 10px 20px;
+    border-radius: 5px;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -42,102 +50,157 @@ nav a:hover {
     color: #fff;
 }
 
-/* --- Layout (Flexbox) --- */
+/* ========================================
+   3. MAIN CONTENT & FLEXBOX LAYOUT
+   ======================================== 
+*/
 main {
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 2rem auto;
-    padding: 0 1rem;
+    padding: 0 20px;
 }
 
+/* Task 4: Responsive Blog Container */
 .blog-container {
     display: flex;
-    flex-direction: column; /* Mobile first stack */
-    gap: 20px;
+    flex-direction: column; /* Default: Stacked for small screens */
+    gap: 30px;
 }
 
 article {
-    background: white;
-    padding: 1.5rem;
+    background: #fff;
+    padding: 25px;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 }
 
-/* --- Form Styles --- */
+article h2 {
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+
+/* ========================================
+   4. CONTACT FORM STYLES
+   ======================================== 
+*/
 #contact {
-    margin-top: 3rem;
-    background: white;
-    padding: 2rem;
+    margin-top: 4rem;
+    background: #fff;
+    padding: 30px;
     border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 }
 
 .form-group {
-    margin-bottom: 1rem;
+    margin-bottom: 20px;
     display: flex;
     flex-direction: column;
 }
 
+label {
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+/* Task 6: Form Transitions (Border & Background) */
 input, textarea {
-    padding: 10px;
-    border: 2px solid #ddd;
-    border-radius: 4px;
+    padding: 12px;
+    border: 2px solid #eee;
+    border-radius: 5px;
+    font-size: 1rem;
     transition: border-color 0.4s ease, background-color 0.4s ease;
 }
 
-/* Form Transition on Hover/Focus */
-input:focus, textarea:focus, 
-input:hover, textarea:hover {
+input:hover, textarea:hover,
+input:focus, textarea:focus {
     border-color: #3498db;
-    background-color: #f0f8ff;
+    background-color: #f0f7ff;
     outline: none;
 }
 
 button {
-    background: #2c3e50;
+    background-color: #3498db;
     color: white;
-    padding: 10px 20px;
+    padding: 12px 25px;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
-    transition: transform 0.2s;
+    font-size: 1rem;
+    transition: transform 0.2s ease, background-color 0.3s ease;
 }
 
 button:hover {
-    transform: scale(1.05);
+    background-color: #2980b9;
+    transform: translateY(-2px);
 }
 
+/* ========================================
+   5. FOOTER
+   ======================================== 
+*/
 footer {
     text-align: center;
-    padding: 2rem;
-    background: #2c3e50;
-    color: white;
-    margin-top: 2rem;
+    padding: 3rem 1rem;
+    background-color: #1a1a1a;
+    color: #888;
+    margin-top: 4rem;
 }
 
-/* --- Media Queries --- */
+/* ========================================
+   6. MEDIA QUERIES (Task 5)
+   ======================================== 
+*/
 
-/* Phone: 767px and below (Articles remain stacked) */
+/* PHONE: Max width 767px */
 @media (max-width: 767px) {
-    header h1 { font-size: 1.5rem; }
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .blog-container {
+        flex-direction: column; /* Stay stacked */
+    }
 }
 
-/* Tablet: 768px to 1024px */
+/* TABLET: 768px to 1024px */
 @media (min-width: 768px) and (max-width: 1024px) {
     .blog-container {
-        flex-direction: row; /* Side by side */
+        flex-direction: row; /* Articles side-by-side */
+        flex-wrap: wrap;
     }
-    article { flex: 1; }
+    
+    article {
+        flex: 1; /* Equal width */
+    }
 }
 
-/* Desktop: 1025px and up */
+/* DESKTOP: 1025px and up */
 @media (min-width: 1025px) {
     .blog-container {
-        flex-direction: row;
+        flex-direction: row; /* Articles side-by-side */
     }
-    article { flex: 1; }
+    
+    article {
+        flex: 1;
+    }
+    
+    main {
+        padding: 0 50px;
+    }
 }
 
-/* --- Animations --- */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+/* ========================================
+   7. KEYFRAMES (Task 6)
+   ======================================== 
+*/
+@keyframes fadeInPage {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
